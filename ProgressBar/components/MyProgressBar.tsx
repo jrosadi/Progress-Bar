@@ -21,16 +21,12 @@ const MyProgressBar:React.FC = () => {
       setIsVisible(!isVisible)
   }
 
-  const test = () => {
-    alert(barVal)
-  }
   return( 
   <View>
     <ProgressBar progress={barVal} color={"green"} visible={isVisible}/>
     <Button title='Press to add progress' onPress={()=>addProgress(0.1)}></Button>
     <Button title='Press to remove progress' onPress={()=>removeProgress(0.1)}></Button>
     <Button title='Press to toggle visibility' onPress={toggleVisible}></Button>
-    <Button title='Test' onPress={test}></Button>
   </View>
   )
 };
