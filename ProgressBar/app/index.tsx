@@ -1,7 +1,8 @@
 import MyProgressBar from "@/components/MyProgressBar";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 
 export default function Index() {
+  
   return (
     <View>
       <MyProgressBar/>
@@ -9,10 +10,3 @@ export default function Index() {
   );
 }
 
-const styles = StyleSheet.create({
-  container:{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }
-})
