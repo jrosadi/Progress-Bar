@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Button, View } from 'react-native';
-import { MD3Colors, ProgressBar } from 'react-native-paper';
+import { ProgressBar } from 'react-native-paper';
 
 const MyProgressBar:React.FC = () => {
   const [barVal, setBarVal] = React.useState<number>(0);
+  const [isVisible, setIsVisible] = React.useState<boolean>(true);
   const addProgress = (prog:number ) => {
     if(barVal < 1){
       setBarVal(barVal+prog)
@@ -15,11 +16,16 @@ const MyProgressBar:React.FC = () => {
       setBarVal(barVal-prog)
     }
   }
+
+  const toggleVisible = () => {
+      setIsVisible(!isVisible)
+  }
   return( 
   <View>
-    <ProgressBar progress={barVal} color={MD3Colors.error50} />
+    <ProgressBar progress={barVal} color={"green"} visible={isVisible}/>
     <Button title='Press to add progress' onPress={()=>addProgress(0.1)}></Button>
     <Button title='Press to remove progress' onPress={()=>removeProgress(0.1)}></Button>
+    <Button title='Press to toggle visibility' onPress={()=>toggleVisible()}></Button>
   </View>
   )
 };
