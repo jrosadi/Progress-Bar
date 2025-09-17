@@ -6,13 +6,13 @@ const MyProgressBar:React.FC = () => {
   const [barVal, setBarVal] = React.useState<number>(0);
   const [isVisible, setIsVisible] = React.useState<boolean>(true);
   const addProgress = (prog:number ) => {
-    if(barVal < 1){
+    if(barVal < 0.999){
       setBarVal(barVal+prog)
     }
   }
 
   const removeProgress = (prog:number ) => {
-    if(barVal>0){
+    if(barVal>0.00000001){
       setBarVal(barVal-prog)
     }
   }
@@ -20,12 +20,17 @@ const MyProgressBar:React.FC = () => {
   const toggleVisible = () => {
       setIsVisible(!isVisible)
   }
+
+  const test = () => {
+    alert(barVal)
+  }
   return( 
   <View>
     <ProgressBar progress={barVal} color={"green"} visible={isVisible}/>
     <Button title='Press to add progress' onPress={()=>addProgress(0.1)}></Button>
     <Button title='Press to remove progress' onPress={()=>removeProgress(0.1)}></Button>
-    <Button title='Press to toggle visibility' onPress={()=>toggleVisible()}></Button>
+    <Button title='Press to toggle visibility' onPress={toggleVisible}></Button>
+    <Button title='Test' onPress={test}></Button>
   </View>
   )
 };
