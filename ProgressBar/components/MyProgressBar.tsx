@@ -1,6 +1,8 @@
+import AntDesign from '@expo/vector-icons/AntDesign';
 import * as React from 'react';
-import { Button, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import { ProgressBar } from 'react-native-paper';
+
 
 const MyProgressBar:React.FC = () => {
   const [barVal, setBarVal] = React.useState<number>(0);
@@ -22,13 +24,24 @@ const MyProgressBar:React.FC = () => {
   }
 
   return( 
-  <View>
-    <ProgressBar progress={barVal} color={"green"} visible={isVisible}/>
-    <Button title='Press to add progress' onPress={()=>addProgress(0.1)}></Button>
-    <Button title='Press to remove progress' onPress={()=>removeProgress(0.1)}></Button>
+  <View style = {styles.container}>
+    <ProgressBar progress={barVal} color={"purple"} visible={isVisible}/>
+    <Text>Press to add progress</Text>
+    <AntDesign name="plus" size={32} color="green" onPress={()=>addProgress(0.1)}/>
+    <AntDesign name="minus" size={32} color="red" onPress={()=>removeProgress(0.1)}/>
+    <Text>Press to remove progress</Text>
     <Button title='Press to toggle visibility' onPress={toggleVisible}></Button>
   </View>
   )
 };
+
+const styles = StyleSheet.create({
+
+  container: {
+          flex : 1,
+          padding: 16,
+          alignItems: "center",
+      },
+})
 
 export default MyProgressBar;
